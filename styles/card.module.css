@@ -1,0 +1,13 @@
+.cardList {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.card {
+    padding: 10px;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+}

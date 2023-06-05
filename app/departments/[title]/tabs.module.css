@@ -1,0 +1,15 @@
+.tabsList {
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.tabItem {
+    padding: 5px;
+}
+
+.tabItem[data-selected="true"] {
+    border-bottom: 2px solid currentColor;
+    border-bottom-color: #9C1C1C;
+}
