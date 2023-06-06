@@ -1,0 +1,86 @@
+.loginContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.loginLabel {
+    display: block;
+    /*margin-top: 50px;*/
+}
+
+.loginInput {
+    display: block;
+    margin-bottom: 25px;
+    border: 0;
+    outline: 0;
+    padding: 5px;
+    font-size: 20px;
+
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid black;
+
+}
+
+.loginInput:focus {
+    border-color: gray;
+}
+
+.loginButton {
+    margin-bottom: 50px;
+
+}
+
+.loginButton {
+  align-items: center;
+  background-color: #fff;
+  border: 2px solid #000;
+  box-sizing: border-box;
+  color: #000;
+  cursor: pointer;
+  display: inline-flex;
+  fill: #000;
+  font-family: Inter,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  height: 48px;
+  justify-content: center;
+  letter-spacing: -.8px;
+  line-height: 24px;
+  min-width: 140px;
+  outline: 0;
+  padding: 0 17px;
+  text-align: center;
+  text-decoration: none;
+  transition: all .3s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.loginButton:focus {
+  border-color: green;
+  color: green;
+  fill: green;
+}
+
+.loginButton:hover {
+  border-color: green;
+  color: green;
+  fill: green;
+}
+
+.loginButton:active {
+  border-color: green;
+  color: green;
+  fill: green;
+}
+
+@media (min-width: 768px) {
+  .loginButton {
+    min-width: 170px;
+  }
+}

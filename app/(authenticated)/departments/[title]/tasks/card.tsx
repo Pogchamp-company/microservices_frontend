@@ -1,6 +1,6 @@
 import cardStyles from "styles/card.module.css"
 import rowStyles from "styles/row.module.css"
-import formatDate from "../../../../utils/format_date";
+import formatDate from "../../../../../utils/format_date";
 
 export default function TaskCard({
                                      taskName,

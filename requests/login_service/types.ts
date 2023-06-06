@@ -1,0 +1,1 @@
+export type UserRole = "task_manager" | "human_resources" | "director"
