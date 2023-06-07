@@ -1,0 +1,8 @@
+.underlineInput {
+    padding: 5px;
+    font-size: 20px;
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px black solid;
+    outline: 0;
+}

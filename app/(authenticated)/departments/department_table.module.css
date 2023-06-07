@@ -1,0 +1,10 @@
+.addDepartmentButton[data-opened="true"] svg {
+    /*transition-delay: 1s;*/
+    transition: transform 500ms;
+    transform: rotate(45deg);
+}
+
+.addDepartmentButton[data-opened="false"] svg {
+    /*transition-delay: 1s;*/
+    transition: transform 0.5s;
+}

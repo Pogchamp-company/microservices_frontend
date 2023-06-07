@@ -1,0 +1,19 @@
+.editPanel {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.editPanelSearchContainer {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.editPanelSearchContainer input {
+    padding: 5px 10px;
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px black solid;
+    font-size: 20px;
+}
