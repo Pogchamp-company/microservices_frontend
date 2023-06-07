@@ -1,6 +1,7 @@
 import {UserRole} from "./types";
 import {login_service_api_url} from "./base";
 import getAuthHeaders from "../base_headers";
+import RequestError from "../base_error";
 
 type CheckTokenResponse = {
     email: string,
@@ -8,15 +9,17 @@ type CheckTokenResponse = {
 }
 
 export default async function check_token(): Promise<CheckTokenResponse | undefined> {
+    console.log('checking')
     const response = await fetch(`${login_service_api_url}/auth/check`, {
         headers: getAuthHeaders(),
         cache: "no-store",
     })
 
-    try {
-        return await response.json()
-    } catch (e) {
-        console.log(e)
-        return undefined
+    const result = await response.json()
+
+    if (response.status !== 200) {
+        throw new RequestError(response.status, result)
     }
+
+    return result
 }

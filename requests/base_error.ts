@@ -1,9 +1,10 @@
 export default class RequestError extends Error {
     status: number
-    response: number
+    response: string
 
     constructor(status: number, response: any = {}) {
-        super(`Сервер вернул статус ${status} и сказал ${response}`);
+        response = response.detail ?? response
+        super(`Сервер вернул статус ${status}: ${response}`);
         this.status = status
         this.response = response
     }

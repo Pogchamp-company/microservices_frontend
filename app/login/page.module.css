@@ -29,6 +29,11 @@
     border-color: gray;
 }
 
+.loginErrorLabel {
+    color: #b30000;
+    margin-bottom: 10px;
+}
+
 .loginButton {
     margin-bottom: 50px;
 
