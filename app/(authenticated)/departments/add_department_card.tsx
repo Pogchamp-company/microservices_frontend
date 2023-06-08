@@ -6,14 +6,17 @@ import rowStyles from "styles/row.module.css"
 import transparentButtonStyles from "../../../styles/transparent_button.module.css";
 import createDepartment from "../../../requests/hr_service/departments/post";
 import {useState} from "react";
-import {useRouter} from "next/navigation";
 
-export default function AddDepartmentCard({closeAddDepartmentCard}: { closeAddDepartmentCard: () => void }) {
+interface AddDepartmentCard {
+    closeAddDepartmentCard: () => void
+}
+
+export default function AddDepartmentCard(props: AddDepartmentCard) {
     const [title, setTitle] = useState("")
 
     async function submitDepartment() {
         await createDepartment(title);
-        closeAddDepartmentCard()
+        props.closeAddDepartmentCard()
     }
 
     return <div className={cardStyles.card + " " + rowStyles.row}>

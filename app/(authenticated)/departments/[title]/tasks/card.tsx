@@ -1,27 +1,23 @@
 import cardStyles from "styles/card.module.css"
 import rowStyles from "styles/row.module.css"
-import formatDate from "../../../../../utils/format_date";
+import formatDate from "utils/format_date";
 
-export default function TaskCard({
-                                     taskName,
-                                     taskStart,
-                                     taskEnd,
-                                     taskDeadline,
-                                     taskPerformer
-                                 }: {
+interface TaskCardProps {
     taskName: string,
     taskStart: Date | null,
     taskEnd: Date | null,
     taskDeadline: Date | null,
     taskPerformer: string,
-}) {
+}
+
+export default function TaskCard(props: TaskCardProps) {
     return <div className={cardStyles.card}>
-        <div>{taskName}</div>
-        <div>Исполнитель: {taskPerformer}</div>
+        <div>{props.taskName}</div>
+        <div>Исполнитель: {props.taskPerformer}</div>
         <div className={rowStyles.row}>
-            {taskStart && <div>Начало: {formatDate(taskStart)}</div>}
-            {taskEnd && <div>Конец: {formatDate(taskEnd)}</div>}
-            {taskDeadline && <div>Крайний срок: {formatDate(taskDeadline)}</div>}
+            {props.taskStart && <div>Начало: {formatDate(props.taskStart)}</div>}
+            {props.taskEnd && <div>Конец: {formatDate(props.taskEnd)}</div>}
+            {props.taskDeadline && <div>Крайний срок: {formatDate(props.taskDeadline)}</div>}
         </div>
     </div>
 }

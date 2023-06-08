@@ -1,10 +1,12 @@
 import cardStyles from "styles/card.module.css"
 import rowStyles from "styles/row.module.css"
 
-export default function EmployeeCard({employeeName, occupationTitle}: {
+interface EmployeeCardProps {
     employeeName: string,
     occupationTitle: string,
-}) {
+}
+
+export default function EmployeeCard({employeeName, occupationTitle}: EmployeeCardProps) {
     return <div className={cardStyles.card}>
         <div className={rowStyles.row}>
             <div>{employeeName}</div>

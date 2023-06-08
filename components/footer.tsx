@@ -1,4 +1,4 @@
-import {faGithub, faPython, faNodeJs, faReact, faUbuntu, faDocker} from '@fortawesome/free-brands-svg-icons'
+import {faDocker, faNodeJs, faPython, faReact, faUbuntu} from '@fortawesome/free-brands-svg-icons'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import footerStyles from "./footer.module.css"
 

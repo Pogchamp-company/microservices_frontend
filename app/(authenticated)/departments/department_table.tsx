@@ -1,5 +1,5 @@
 'use client'
-import {ReactNode, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import cardStyles from "styles/card.module.css";
 import editTableStyles from "styles/edit_table.module.css";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -7,23 +7,15 @@ import {faFilter, faPlus, faSearch} from '@fortawesome/free-solid-svg-icons'
 import AddDepartmentCard from "./add_department_card";
 import transparentButtonStyles from "styles/transparent_button.module.css"
 import departmentTableStyles from "./department_table.module.css"
-import {useInfiniteQuery, useQuery} from "@tanstack/react-query";
-import {User} from "../../../requests/hr_service/types";
+import {useInfiniteQuery} from "@tanstack/react-query";
 import readDepartments from "../../../requests/hr_service/departments/get";
 import DepartmentCard from "./card";
 import {useInView} from "react-intersection-observer";
 
-type DepartmentTableProps = {
-    children: ReactNode
-}
+interface DepartmentTableProps {}
 
-async function getUsers() {
-    const res = await fetch("https://jsonplaceholder.typicode.com/users");
-    return (await res.json()) as User[];
-}
-
-export default function DepartmentTable({children}: DepartmentTableProps) {
-    const {data, isLoading, isFetching, error, fetchNextPage, hasNextPage, refetch} = useInfiniteQuery({
+export default function DepartmentTable() {
+    const {data, isLoading, fetchNextPage, hasNextPage, refetch} = useInfiniteQuery({
         queryKey: ["initial-users"],
         queryFn: ({pageParam = 0}) => readDepartments(pageParam),
         getNextPageParam: (lastPage, pages) => {
@@ -33,23 +25,26 @@ export default function DepartmentTable({children}: DepartmentTableProps) {
             return pages.length
         }
     });
-    console.log(data)
 
+    // plain array of departments
     const departments = data?.pages.flatMap(d => d)
 
+    // Flag should create department be displayed
     const [showCreateCard, setShowCreateCard] = useState(false)
 
-    const {ref, inView, entry} = useInView({
-        threshold: 0,
-    });
-    useEffect(() => {
-        if (inView) fetchNextPage()
-    }, [inView])
-    
     function closeAddDepartmentCard() {
         setShowCreateCard(false)
         refetch()
     }
+
+    // Infinite loading
+    const {ref, inView} = useInView({
+        threshold: 0,
+    });
+
+    useEffect(() => {
+        if (inView) fetchNextPage()
+    }, [inView])
 
 
     return <div>
@@ -71,9 +66,8 @@ export default function DepartmentTable({children}: DepartmentTableProps) {
             {showCreateCard && <AddDepartmentCard closeAddDepartmentCard={closeAddDepartmentCard}/>}
             {departments && departments.map((department, i) => (
                 <DepartmentCard key={department.title} department_title={department.title}
-                                loadMoreRef={(i === departments.length - 1 && hasNextPage) ? ref : null}/>
+                                ref={(i === departments.length - 1 && hasNextPage) ? ref : null}/>
             ))}
-            {children}
             {isLoading && <span>Погружаем...</span>}
         </div>
     </div>
