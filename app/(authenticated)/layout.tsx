@@ -9,6 +9,8 @@ export default async function Layout({children}: { children: ReactNode }) {
 
     const cookieStore = cookies();
     const access_token = cookieStore.get('access_token');
+    console.log(cookieStore.getAll())
+    console.log(access_token)
     if (access_token === undefined) {
         redirect('/login', RedirectType.replace)
     }
@@ -17,6 +19,7 @@ export default async function Layout({children}: { children: ReactNode }) {
         await check_token()
     } catch (error) {
         if (error instanceof RequestError) {
+            console.log(error)
             redirect('/login', RedirectType.replace)
         }
     }

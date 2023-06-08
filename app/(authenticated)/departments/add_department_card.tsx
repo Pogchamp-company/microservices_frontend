@@ -8,14 +8,12 @@ import createDepartment from "../../../requests/hr_service/departments/post";
 import {useState} from "react";
 import {useRouter} from "next/navigation";
 
-export default function AddDepartmentCard({setShowCreateCard}: { setShowCreateCard: (boolean) => void }) {
+export default function AddDepartmentCard({closeAddDepartmentCard}: { closeAddDepartmentCard: () => void }) {
     const [title, setTitle] = useState("")
-    const router = useRouter()
 
     async function submitDepartment() {
         await createDepartment(title);
-        router.refresh()
-        setShowCreateCard(false)
+        closeAddDepartmentCard()
     }
 
     return <div className={cardStyles.card + " " + rowStyles.row}>

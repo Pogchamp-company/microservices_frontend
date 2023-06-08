@@ -4,6 +4,7 @@ import {FormEvent, useState} from "react";
 import login from "requests/login_service/login";
 import {useRouter} from "next/navigation";
 import RequestError from "../../requests/base_error";
+import {setCookie} from "cookies-next";
 
 export default function Page() {
     const [email, setEmail] = useState<string>("")
@@ -15,7 +16,7 @@ export default function Page() {
         event.preventDefault()
         try {
             const {token} = await login(email, password)
-            document.cookie = `access_token=${token}`;
+            setCookie('access_token', token)
             replace('/departments')
         } catch (error) {
             if (error instanceof RequestError) {

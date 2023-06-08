@@ -4,6 +4,7 @@ import '@fortawesome/fontawesome-svg-core/styles.css'
 import Content from "../components/content";
 import {ReactNode} from "react";
 import Footer from "../components/footer";
+import Providers from "../components/react_query_provider";
 
 export const metadata = {
     title: 'Org manager',
@@ -18,7 +19,9 @@ export default function RootLayout({children}: {
         <body>
         <Header/>
         <Content>
-            {children}
+            <Providers>
+                {children}
+            </Providers>
         </Content>
         <Footer/>
         </body>

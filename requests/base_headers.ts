@@ -1,7 +1,6 @@
-import {cookies} from "next/headers";
+import {cookies, headers} from "next/headers";
 
-export default function getAuthHeaders():{Accept: string, Authorization: string, "Content-Type": string} {
-
+export default function getAuthHeaders(): { Accept: string, Authorization: string, "Content-Type": string } {
     const cookieStore = cookies();
     const access_token: string = cookieStore.get('access_token')?.value.toString() as string;
 

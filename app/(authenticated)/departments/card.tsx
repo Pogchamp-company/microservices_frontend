@@ -3,11 +3,12 @@ import Link from "next/link";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUser} from '@fortawesome/free-solid-svg-icons'
 
-export default function DepartmentCard({department_title}: {
-    department_title: string
+export default function DepartmentCard({department_title, loadMoreRef}: {
+    department_title: string,
+    loadMoreRef: any
 }) {
     return <Link href={`/departments/${department_title}`}>
-        <div className={cardStyles.card}>
+        <div className={cardStyles.card} ref={loadMoreRef}>
             <div><b>Отдел {department_title}</b></div>
             <div><span> 0 </span><FontAwesomeIcon icon={faUser}/></div>
         </div>

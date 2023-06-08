@@ -13,6 +13,24 @@ module.exports = {
             },
         ]
     },
+    async headers() {
+        return [
+            {
+                source: '/:path*',
+                has: [{
+                    type: 'cookie',
+                    key: 'access_token',
+                    value: ':authorization',
+                }],
+                headers: [
+                    {
+                        key: 'x-Authorization',
+                        value: ':authorization',
+                    },
+                ],
+            }
+        ]
+    },
     experimental: {
         serverActions: true,
     },
