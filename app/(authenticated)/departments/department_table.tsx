@@ -16,7 +16,7 @@ interface DepartmentTableProps {}
 
 export default function DepartmentTable() {
     const {data, isLoading, fetchNextPage, hasNextPage, refetch} = useInfiniteQuery({
-        queryKey: ["initial-users"],
+        queryKey: ["departments"],
         queryFn: ({pageParam = 0}) => readDepartments(pageParam),
         getNextPageParam: (lastPage, pages) => {
             if (lastPage.length === 0) {

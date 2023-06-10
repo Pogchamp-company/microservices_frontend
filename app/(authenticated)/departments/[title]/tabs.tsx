@@ -1,17 +1,19 @@
 import Link from "next/link";
 import tabStyles from "./tabs.module.css"
 
-interface DepartmentTabs {
-    selectedTab: string,
-    departmentName: string
-}
+type TabsList = "employees" | "vacancies" | "occupations" | "tasks" | "statistics"
 
-const tabs = {
+const tabs: {[tabName: TabsList]: string} = {
     "employees": "Сотрудники",
     "vacancies": "Вакансии",
-    "employee_occupation": "Должности",
+    "occupations": "Должности",
     "tasks": "Задачи",
     "statistics": "Инфографика",
+}
+
+interface DepartmentTabs {
+    selectedTab: TabsList,
+    departmentName: string
 }
 
 export default function DepartmentTabs(props: DepartmentTabs) {

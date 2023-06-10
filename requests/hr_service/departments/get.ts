@@ -4,7 +4,7 @@ import {hr_service_api_url} from "../base";
 import getClientAuthHeaders from "../../base_client_headers";
 
 export default async function readDepartments(page: number = 0): Promise<Department[]> {
-        const response = await fetch(`${hr_service_api_url}/departments?page=${page}`, {
+    const response = await fetch(`${hr_service_api_url}/departments?page=${page}`, {
         headers: getClientAuthHeaders(),
         cache: "no-cache",
     })

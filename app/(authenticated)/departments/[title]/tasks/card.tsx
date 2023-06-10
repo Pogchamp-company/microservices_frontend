@@ -1,6 +1,7 @@
 import cardStyles from "styles/card.module.css"
 import rowStyles from "styles/row.module.css"
 import formatDate from "utils/format_date";
+import {forwardRef} from "react";
 
 interface TaskCardProps {
     taskName: string,
@@ -10,8 +11,8 @@ interface TaskCardProps {
     taskPerformer: string,
 }
 
-export default function TaskCard(props: TaskCardProps) {
-    return <div className={cardStyles.card}>
+const TaskCard = forwardRef<HTMLDivElement, TaskCardProps>((props: TaskCardProps, ref) => {
+    return <div className={cardStyles.card} ref={ref}>
         <div>{props.taskName}</div>
         <div>Исполнитель: {props.taskPerformer}</div>
         <div className={rowStyles.row}>
@@ -20,4 +21,6 @@ export default function TaskCard(props: TaskCardProps) {
             {props.taskDeadline && <div>Крайний срок: {formatDate(props.taskDeadline)}</div>}
         </div>
     </div>
-}
+})
+
+export default TaskCard

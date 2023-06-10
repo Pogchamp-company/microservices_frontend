@@ -32,10 +32,10 @@ touch .env
 
 5. Set [env variables](#environment-variables)
 
-
 ## Environment variables
 
-| Variable                      |    Description    |
-|-------------------------------|:-----------------:|
-| NEXT_PUBLIC_LOGIN_SERVICE_URL | Login service uri |
-| NEXT_PUBLIC_HR_SERVICE_URL    |  HR service uri   | 
+| Variable                                |         Description         |
+|-----------------------------------------|:---------------------------:|
+| NEXT_PUBLIC_LOGIN_SERVICE_URL           |      Login service uri      |
+| NEXT_PUBLIC_HR_SERVICE_URL              |       HR service uri        | 
+| NEXT_PUBLIC_TASK_MANAGEMENT_SERVICE_URL | Task Management service uri |
